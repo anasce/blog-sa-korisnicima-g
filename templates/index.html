@@ -1,0 +1,56 @@
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://images.unsplash.com/photo-1567112215456-81c2eb69576e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjE1fHxiZWFjaCUyMGNyb3dkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Анин блог</h1>
+            <span class="subheading">Збирка насумичних размишљања.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% for post in all_posts %}
+        <div class="post-preview">
+          <a href="{{ url_for('show_post', post_id=post.id) }}">
+            <h2 class="post-title">
+              {{post.title}}
+            </h2>
+            <h3 class="post-subtitle">
+              {{post.subtitle}}
+            </h3>
+          </a>
+          <p class="post-meta">Пост направила
+
+            <a href="#">{{post.au_i}}</a>
+            on {{post.date}}
+          {% if  ja: %}
+            <a href="{{url_for('delete_post', post_id=post.id) }}">✘</a>
+          {% endif %}
+          </p>
+        </div>
+        <hr>
+        {% endfor %}
+
+
+        <!-- New Post -->
+        <div class="clearfix">
+          {% if  ja: %}
+          <a class="btn btn-primary float-right" href="{{url_for('add_new_post')}}">Креирајте нови пост</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+{% include "footer.html" %}

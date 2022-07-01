@@ -1,0 +1,84 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+{% block content %}
+
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{{post.img_url}}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1>{{post.title}}</h1>
+                    <h2 class="subheading">{{post.subtitle}}</h2>
+                    <span class="meta">Пост направила
+              <a href="#">{{post.au_i}}</a>
+              on {{post.date}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                {{ post.body|safe }}
+                <hr>
+
+                <div class="clearfix">
+                    {% if ja: %}
+                    <a class="btn btn-primary float-right" href="{{url_for('edit_post', post_id=post.id)}}">Измијените
+                        пост</a>
+                    {% endif %}
+                </div>
+
+
+                <!--           Comments Area -->
+
+
+            </div>
+        </div>
+    </div>
+</article>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {% if  jl: %}
+            {{ ckeditor.load() }}
+            {{ ckeditor.config(name='body') }}
+            {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+            {% endif %}
+            {% for komentar in komentari %}
+            <div class="col-lg-8 col-md-10 mx-auto comment">
+                <ul class="commentList">
+                    <li>
+                        <div class="commenterImage">
+                            <img src="{{ komentar.elp | gravatar(size=28, rating='x') }}"/>
+                        </div>
+                        <div class="commentText">
+                            <p>
+
+                                {{ komentar.body|safe }}
+                            </p>
+                            <span class="date sub-text">Autor {{komentar.au_k_i}}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+<hr>
+<hr>
+
+<hr>
+
+{% include "footer.html" %}
+{% endblock %}
