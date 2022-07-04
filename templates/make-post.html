@@ -10,12 +10,13 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            {% if is_edit: %}
+            {% if not np: %}
             <h1>Измијени пост</h1>
             {% else: %}
             <h1>Нови пост</h1>
-            {% endif %}
             <span class="subheading">Направићете сјајан блог пост!</span>
+            {% endif %}
+
           </div>
         </div>
       </div>

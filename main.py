@@ -214,7 +214,7 @@ def show_post(post_id):
                         force_lower=False,
                         use_ssl=False,
                         base_url=None)
-    return render_template("post.html", post=requested_post, jl = bool(current_user.is_authenticated),ja=jap,form=form,komentari=svi_bp_komentari)
+    return render_template("post.html", post=requested_post, jl = bool(current_user.is_authenticated),ja=jap,form=form,komentari=svi_bp_komentari,np=False)
 
 
 @app.route("/about")
@@ -246,7 +246,7 @@ def add_new_post():
         db.session.add(new_post)
         db.session.commit()
         return redirect(url_for("get_all_posts"))
-    return render_template("make-post.html", form=form, jl = bool(current_user.is_authenticated))
+    return render_template("make-post.html", form=form, jl = bool(current_user.is_authenticated),np=True)
 
 
 @app.route("/edit-post/<int:post_id>",methods=["POST","GET"])
