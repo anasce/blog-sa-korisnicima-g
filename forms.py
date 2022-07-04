@@ -15,7 +15,8 @@ class CreatePostForm(FlaskForm):
 
 class  RegisterForm(FlaskForm):
     #email = EmailField("Ел. пошта", validators=[DataRequired(),Email()])
-    email = StringField("Ел. пошта", validators=[DataRequired(), Email()])
+    #email = StringField("Ел. пошта", validators=[DataRequired(), Email()])
+    email = StringField("Ел. пошта", validators=[DataRequired()])
     password = PasswordField('Шифра', validators=[DataRequired()])
     # [validators.Required("Please enter your email address."), validators.Email("Please enter your email address.")]
     #password = PasswordField('Шифра', validators=[DataRequired("Please enter your email address."), validators.Email("Please enter your email address.")])
@@ -28,7 +29,8 @@ class  RegisterForm(FlaskForm):
 
 class  LoginForm(FlaskForm):
     #email = EmailField("Ел. пошта", validators=[DataRequired(),Email()])
-    email = StringField("Ел. пошта", validators=[DataRequired(), Email()])
+    #email = StringField("Ел. пошта", validators=[DataRequired(), Email()])
+    email = StringField("Ел. пошта", validators=[DataRequired()])
     password = PasswordField('Шифра', validators=[DataRequired()])
     # [validators.Required("Please enter your email address."), validators.Email("Please enter your email address.")]
     #password = PasswordField('Шифра', validators=[DataRequired("Please enter your email address."), validators.Email("Please enter your email address.")])
