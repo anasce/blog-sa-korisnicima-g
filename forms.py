@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, URL,Email
 from flask_ckeditor import CKEditorField
-from wtforms.fields import EmailField
+#from wtforms.fields import EmailField
 
 
 ##WTForm
@@ -14,8 +14,8 @@ class CreatePostForm(FlaskForm):
     submit = SubmitField("Сачувај пост")
 
 class  RegisterForm(FlaskForm):
-    email = EmailField("Ел. пошта", validators=[DataRequired(),Email()])
-
+    #email = EmailField("Ел. пошта", validators=[DataRequired(),Email()])
+    email = StringField("Ел. пошта", validators=[DataRequired(), Email()])
     password = PasswordField('Шифра', validators=[DataRequired()])
     # [validators.Required("Please enter your email address."), validators.Email("Please enter your email address.")]
     #password = PasswordField('Шифра', validators=[DataRequired("Please enter your email address."), validators.Email("Please enter your email address.")])
@@ -26,7 +26,8 @@ class  RegisterForm(FlaskForm):
     # name = db.Column(db.String(250), nullable=False)
 
 class  LoginForm(FlaskForm):
-    email = EmailField("Ел. пошта", validators=[DataRequired(),Email()])
+    #email = EmailField("Ел. пошта", validators=[DataRequired(),Email()])
+    email = StringField("Ел. пошта", validators=[DataRequired(), Email()])
     password = PasswordField('Шифра', validators=[DataRequired()])
     # [validators.Required("Please enter your email address."), validators.Email("Please enter your email address.")]
     #password = PasswordField('Шифра', validators=[DataRequired("Please enter your email address."), validators.Email("Please enter your email address.")])
