@@ -1,8 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField,EmailField
+from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, URL,Email
 from flask_ckeditor import CKEditorField
-#from wtforms.fields.html5 import EmailField
+from wtforms.fields import EmailField
+
 
 ##WTForm
 class CreatePostForm(FlaskForm):
