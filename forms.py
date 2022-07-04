@@ -24,6 +24,7 @@ class  RegisterForm(FlaskForm):
     # email = db.Column(db.String(250), nullable=False)
     # password = db.Column(db.String(250), nullable=False)
     # name = db.Column(db.String(250), nullable=False)
+    #
 
 class  LoginForm(FlaskForm):
     #email = EmailField("Ел. пошта", validators=[DataRequired(),Email()])
