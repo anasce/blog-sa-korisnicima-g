@@ -227,6 +227,7 @@ def about():
 @app.route("/contact")
 def contact():
     return render_template("contact.html", jl = bool(current_user.is_authenticated))
+
 @app.route("/contact1")
 def contact1():
     return render_template("f.html", jl = bool(current_user.is_authenticated))
