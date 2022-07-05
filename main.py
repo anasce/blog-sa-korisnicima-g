@@ -228,7 +228,7 @@ def about():
 def contact():
     return render_template("contact.html", jl = bool(current_user.is_authenticated))
 @app.route("/contact1")
-def contact():
+def contact1():
     return render_template("f.html", jl = bool(current_user.is_authenticated))
 
 @app.route("/new-post",methods=["POST","GET"])
