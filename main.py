@@ -240,9 +240,8 @@ def add_new_post():
             subtitle=form.subtitle.data,
             body=form.body.data,
             img_url=form.img_url.data,
-
-
-            date=date.today().strftime("%B %d, %Y"),
+            #date=date.today().strftime("%B %d, %Y"),
+            date=date.today().strftime("%d.%m.%Y.")+" г.",
             reguser_id=sikor.id
         )
         db.session.add(new_post)

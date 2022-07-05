@@ -55,6 +55,7 @@
             {% endif %}
             {% for komentar in komentari %}
             <div class="col-lg-8 col-md-10 mx-auto comment">
+                Коментари
                 <ul class="commentList">
                     <li>
                         <div class="commenterImage">
@@ -65,7 +66,7 @@
 
                                 {{ komentar.body|safe }}
                             </p>
-                            <span class="date sub-text">Autor {{komentar.au_k_i}}</span>
+                            <span class="date sub-text">Аутор {{komentar.au_k_i}}</span>
                         </div>
                     </li>
                 </ul>
