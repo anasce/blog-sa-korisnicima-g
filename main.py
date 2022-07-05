@@ -224,7 +224,7 @@ def about():
     return render_template("about.html", jl = bool(current_user.is_authenticated))
 
 
-@app.route("/contact")
+@app.route("/contact/form")
 def contact():
     return render_template("contact.html", jl = bool(current_user.is_authenticated))
 
