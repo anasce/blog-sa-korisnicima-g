@@ -32,7 +32,7 @@
           <p class="post-meta">Пост направила
 
             <a href="#">{{post.au_i}}</a>
-            on {{post.date}}
+             {{post.date}}
           {% if  ja: %}
             <a href="{{url_for('delete_post', post_id=post.id) }}">✘</a>
           {% endif %}
