@@ -229,33 +229,9 @@ def about():
     return render_template("about.html", jl = bool(current_user.is_authenticated))
 
 
-@app.route("/contact",methods=["GET","POST"])
+@app.route("/contact")
 def contact():
-    if request.method == "POST":
-        ime_r = request.form['name']
-        mejl_r = request.form['email']
-        tel_r = request.form['phone']
-        por_r = request.form['message']
-        print(ime_r)
-        print(mejl_r)
-        print(tel_r)
-        print(por_r)
-        naslov = "Суццессфуллу..."
 
-        with smtplib.SMTP("smtp.gmail.com") as server:
-            server.starttls()
-            server.ehlo()
-            server.login(MY_EMAIL, MY_PASSWORD)
-            server.sendmail(MY_EMAIL, mejl_r,
-                            f"Subject:Satelit\n\nIme: {ime_r}, Šifra: {mejl_r},Telefon: {tel_r}, Poruka: {por_r}")
-            server.quit()
-        #return render_template('contact.html', ime_h=ime_r, mejl_h=mejl_r, tel_h=tel_r, por_h=por_r, naslov_h=naslov,foto="contact-bg")
-        return redirect(url_for("get_all_posts"))
-        # return render_template('response.html',ime_h=ime_r)
-    else:
-        #return render_template('contact.html', foto="contact-bg", naslov_h="Kontakt mi")
-    # return render_template("index.html")
-    # return render_template('response.html')
         return render_template("contact.html", jl = bool(current_user.is_authenticated))
 
 @app.route("/contact1")

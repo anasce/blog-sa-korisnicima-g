@@ -26,7 +26,7 @@
         <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
         <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
         <!--<form name="sentMessage" id="contactForm" novalidate action=”/contact” method=”POST” ”>-->
-          <form name="sentMessage" id="contactForm" novalidate action="/contact" method="post">
+          <form name="sentMessage" id="contactForm" novalidate >
 
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
@@ -58,7 +58,7 @@
           </div>
           <br>
           <div id="success"></div>
-          <button type="submit" class="btn btn-primary" id="sendMessageButton" >Пошаљите</button>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton" disabled>Пошаљите</button>
         </form>
       </div>
     </div>
