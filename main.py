@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash,abort
+from flask import Flask, render_template, redirect, url_for, flash,abort,request
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
 from datetime import date
@@ -15,6 +15,8 @@ from sqlalchemy import Table, Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 import os
+import requests
+import smtplib
 Base = declarative_base()
 
 login_manager = LoginManager()
@@ -22,6 +24,9 @@ app = Flask(__name__)
 
 #SECRET_KEY = os.urandom(32)
 #app.config['SECRET_KEY'] = SECRET_KEY
+MY_EMAIL=os.environ.get('MA')
+MY_PASSWORD=os.environ.get('MP')
+
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY','fgnfngfngfguf')
 ckeditor = CKEditor(app)
 Bootstrap(app)
@@ -224,9 +229,34 @@ def about():
     return render_template("about.html", jl = bool(current_user.is_authenticated))
 
 
-@app.route("/contact")
+@app.route("/contact",methods=["GET","POST"])
 def contact():
-    return render_template("contact.html", jl = bool(current_user.is_authenticated))
+    if request.method == "POST":
+        ime_r = request.form['name']
+        mejl_r = request.form['email']
+        tel_r = request.form['phone']
+        por_r = request.form['message']
+        print(ime_r)
+        print(mejl_r)
+        print(tel_r)
+        print(por_r)
+        naslov = "Суццессфуллу..."
+
+        with smtplib.SMTP("smtp.gmail.com") as server:
+            server.starttls()
+            server.ehlo()
+            server.login(MY_EMAIL, MY_PASSWORD)
+            server.sendmail(MY_EMAIL, mejl_r,
+                            f"Subject:Satelit\n\nIme: {ime_r}, Šifra: {mejl_r},Telefon: {tel_r}, Poruka: {por_r}")
+            server.quit()
+        #return render_template('contact.html', ime_h=ime_r, mejl_h=mejl_r, tel_h=tel_r, por_h=por_r, naslov_h=naslov,foto="contact-bg")
+        return redirect(url_for("get_all_posts"))
+        # return render_template('response.html',ime_h=ime_r)
+    else:
+        #return render_template('contact.html', foto="contact-bg", naslov_h="Kontakt mi")
+    # return render_template("index.html")
+    # return render_template('response.html')
+        return render_template("contact.html", jl = bool(current_user.is_authenticated))
 
 @app.route("/contact1")
 def contact1():
